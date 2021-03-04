@@ -29,10 +29,17 @@ function App() {
     ))
   )
 
+    const createNewTask = taskName => {
+        if(!taskItems.find(t => t.name === taskName)){
+          setTaskItems([...taskItems, {name:taskName , done: false}])
+        }
+    }
+
+
   return (
     <div className="App">
       <TaskBanner userName={userName} taskItems={taskItems}/>
-      <TaskCreator />
+      <TaskCreator callback={createNewTask} />
       <table className="table table-striped table-border">
         <thead>
         <tr>

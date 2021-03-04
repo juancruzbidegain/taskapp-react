@@ -8,7 +8,7 @@ const TaskCreator = props => {
         setNewTaskName(e.target.value)
     }
     const createNewTask = () => {
-        console.log(newTaskName)
+        props.callback(newTaskName)
         setNewTaskName('')
     }
     return (
