@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import TaskRow  from "./components/TaskRow"
 import TaskBanner  from "./components/TaskBanner"
+import TaskCreator  from "./components/TaskCreator"
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -31,6 +32,7 @@ function App() {
   return (
     <div className="App">
       <TaskBanner userName={userName} taskItems={taskItems}/>
+      <TaskCreator />
       <table className="table table-striped table-border">
         <thead>
         <tr>
