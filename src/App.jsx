@@ -1,31 +1,37 @@
 import {useState} from 'react'
 import TaskRow  from "./components/TaskRow"
+import TaskBanner  from "./components/TaskBanner"
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
-  const [userName, setUserName] = useState('example')
+  const [userName, setUserName] = useState('User Expamle')
+  
   const [taskItems, setTaskItems] = useState([
 
     {name: "Task one", done: false},
     {name: "Task two", done: false},
-    {name: "Task three", done: true},
+    {name: "Task three", done: false},
     {name: "Task four", done: false}
 
 
   ])
 
+  const toggleTask = task => {
+    setTaskItems(taskItems.map(t => (t.name === task.name ? {...t, done: !t.done} : t  )))
+  }
+
   const taskTableRow = () => (
     taskItems.map(task => (
-      <TaskRow task={task} key={task.name} />
+      <TaskRow task={task} key={task.name} toggleTask={toggleTask} />
     ))
   )
 
   return (
     <div className="App">
-      <h1>Hola mundo!</h1>
-      <table>
+      <TaskBanner userName={userName} taskItems={taskItems}/>
+      <table className="table table-striped table-border">
         <thead>
         <tr>
           <th>Description</th>
